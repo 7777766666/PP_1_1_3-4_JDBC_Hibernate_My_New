@@ -17,10 +17,22 @@ public class Util {
 
             Class.forName(DRIVER);                              //вызываем драйвер для работы с MySQL (если старая база до 8 джавы)
             connection = DriverManager.getConnection(URL, USER, PASSWORD);      //вводим из прайвет полей пароли, логин и путь
-     //       System.out.println("connection is very good");                  //в случае успешного подключения
+            //       System.out.println("connection is very good");                  //в случае успешного подключения
         } catch (ClassNotFoundException | SQLException e) {                 //ловим ошибки
             System.out.println("ERROR!!!! Connection is epsent");           //в случае не подключения выводим
         }
         return connection;                          //возвращаем соединение для вызова геттером
+    }
+
+    public static void connectionClose() {      //метод для закрытия соединения
+        if (Util.getConnection() != null) {     //если соединение не равно null
+            try {                               //пробуем
+                Util.getConnection().close();     //закрываем соединение
+                //           System.out.println("Закрыл соединение");    //временная строка говорящая о том, что соединение закрыто
+            } catch (SQLException e) {                      // ловим исключение
+                System.out.println("Connectoion clouse Error"); //выводим в консоль строку, что ошибка при закрытии соединения
+                e.printStackTrace();                //выводим в консоль стэкТрэйс
+            }
+        }
     }
 }

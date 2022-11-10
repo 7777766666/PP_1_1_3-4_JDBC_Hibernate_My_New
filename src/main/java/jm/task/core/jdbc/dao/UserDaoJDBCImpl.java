@@ -20,7 +20,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     }
 
-       public void createUsersTable() {                                     //метод создающий таблицу, ничего не возвращаем
+    public void createUsersTable() {                                     //метод создающий таблицу, ничего не возвращаем
         try (Statement statement = connection.createStatement()) {          //трай с ресурсами + пробуем установить соединение
             String sql = "CREATE TABLE IF NOT EXISTS users " + "(id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(140), last_name VARCHAR(145), age INT)";
             statement.executeUpdate(sql);   //создать таблицу, если она не существует (id авто инкремент, имя 140 символов, фамилия до 145 символов, возраст int
@@ -66,7 +66,7 @@ public class UserDaoJDBCImpl implements UserDao {
         List<User> users = new ArrayList<>();   //создаем эррей лист
 
         try (ResultSet resultSet = connection.createStatement().executeQuery("SELECT * FROM users")) {  //возвращаем ResultSet (переменную, полученную)
-            while(resultSet.next()) {                   //считываем данные по ячейкам таблицы (примерно как компоратор)до тех пор пока есть записи в ячейках
+            while (resultSet.next()) {                   //считываем данные по ячейкам таблицы (примерно как компоратор)до тех пор пока есть записи в ячейках
                 User user = new User(resultSet.getString("name"),   //считываем значение и возвращаем строку состоящую из (значения колонки name)
                         resultSet.getString("last_name"), resultSet.getByte("age")); // считываем и возвращаем геттер Строку, состоящую из колонки lastName, из резулта считываем байт из колонки age
                 user.setId(resultSet.getLong("id"));
@@ -79,7 +79,7 @@ public class UserDaoJDBCImpl implements UserDao {
         return users;       //возвращаем эррей лист пользовтаелей
     }
 
-        public void cleanUsersTable() {     //удаляем содержимое таблицы
+    public void cleanUsersTable() {     //удаляем содержимое таблицы
         try (Statement statement = connection.createStatement()) {  //пытаемся установить соединение в трай с ресурсами
             statement.executeUpdate("TRUNCATE TABLE users");    // удаляем пользователей из пользователей
         } catch (SQLException e) {
