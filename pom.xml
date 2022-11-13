@@ -42,11 +42,21 @@
             <version>1.0.2.Final</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <!-- https://mvnrepository.com/artifact/com.github.MadaraFsl/HibernateUtil -->
+
+
+
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.6.3.Final</version>
         </dependency>
      </dependencies>
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+
+    <!-- https://mvnrepository.com/artifact/com.github.MadaraFsl/HibernateUtil -->
+
 
 </project>
