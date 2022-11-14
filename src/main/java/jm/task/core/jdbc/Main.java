@@ -5,8 +5,9 @@ import jm.task.core.jdbc.util.Util;
 
 public class Main {
     public static void main(String[] args) {
-        UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl(); //создаем объект класса UserDaoHibernateImpl
-        userDaoHibernate.createUsersTable();                                //создаем таблицу пользователей, если таблицы нет
+        UserDaoHibernateImpl userDaoHibernate = new  UserDaoHibernateImpl(); //создаем объект класса UserDaoHibernateImpl
+
+           userDaoHibernate.createUsersTable();                                //создаем таблицу пользователей, если таблицы нет
         userDaoHibernate.saveUser("Ann", "Treugol", (byte) 59);  //добавлем первого пользователя методом saveUser
         userDaoHibernate.saveUser("Petr", "Petrovich", (byte) 68); //добавлем второго пользователя
         userDaoHibernate.saveUser("Lol", "Balabol", (byte) 13);      //добавлем третьего пользователя
